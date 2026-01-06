@@ -1,4 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
+import { ThemeProvider } from "../components/theme-provider";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -22,7 +23,23 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+       <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {/* header */}
+            <main className="min-h-screen"> {children}</main>
+          {/* footer */}
+          <footer className="bg-muted">
+            <div>
+              <p>
+                Made with Muhammad Muzammil
+              </p>
+              </div>
+          </footer>
+          </ThemeProvider>
       </body>
     </html>
   );
